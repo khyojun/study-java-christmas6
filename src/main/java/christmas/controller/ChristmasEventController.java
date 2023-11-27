@@ -15,18 +15,19 @@ public class ChristmasEventController {
     }
 
     public void eventStart() {
-        inputDate();
-
-
+        Date date = inputDate();
 
 
 
     }
 
-    private void inputDate() {
+    private Date inputDate() {
         try{
             outputView.printInputDate();
-            Date date = new Date(inputView.inputDate());
+            return new Date(inputView.inputDate());
+        }catch (IllegalArgumentException error){
+            outputView.printError(error.getMessage());
+            return inputDate();
         }
     }
 }
