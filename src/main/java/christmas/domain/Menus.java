@@ -8,10 +8,23 @@ import java.util.Map.Entry;
 public class Menus {
 
     private final Map<String, Integer> menuInfo;
+
+
     private SeperateService seperateService = new SeperateService();
 
     public Menus(String menus) {
         this.menuInfo = seperateService.convertMenuInputToMenus(menus);
+        validateTotalMenuCount();
+    }
+
+    private void validateTotalMenuCount() {
+        int totalMenuCount=0;
+        for (int value : menuInfo.values()) {
+            totalMenuCount+=value;
+        }
+        if(totalMenuCount>20){
+            throw new IllegalArgumentException("[ERROR] 유효한 주문이 아닙니다!");
+        }
     }
 
     public Map<String, Integer> getMenuInfo() {
