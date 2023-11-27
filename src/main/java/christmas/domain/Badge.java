@@ -2,8 +2,7 @@ package christmas.domain;
 
 public class Badge {
 
-    public String badgeFind(Benefit benefit) {
-        int totalBenefitPrice = benefit.totalBenefitPrice();
+    public String badgeFind(int totalBenefitPrice) {
         if(totalBenefitPrice>=20000){
             return "산타";
         }

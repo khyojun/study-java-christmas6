@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import christmas.service.DiscountPolicy;
-
 public class SaleStatus {
 
     private Dday dday;

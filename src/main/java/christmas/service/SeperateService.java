@@ -43,7 +43,6 @@ public class SeperateService {
     }
 
     private void seperateHyphen(Map<String, Integer> menuInfo, List<String> splitByComma) {
-
             for (String splited : splitByComma) {
                 List<String> splitByHyphen = List.of(splited.split(HYPHEN));
                 validateRightHyphen(splitByHyphen);

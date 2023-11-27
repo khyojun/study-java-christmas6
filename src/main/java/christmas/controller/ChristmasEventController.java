@@ -43,7 +43,7 @@ public class ChristmasEventController {
     }
 
     private void badgeCheck(Benefit benefit) {
-        outputView.printBadge(badge.badgeFind(benefit));
+        outputView.printBadge(badge.badgeFind(benefit.totalBenefitPrice()));
     }
 
     private void saleCheck(Menus menus, Date date) {
