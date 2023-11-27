@@ -1,8 +1,6 @@
 package christmas.domain;
 
 import christmas.exception.DateException;
-import java.util.regex.Pattern;
-
 public class Date {
 
     private static final int START_DATE=1;

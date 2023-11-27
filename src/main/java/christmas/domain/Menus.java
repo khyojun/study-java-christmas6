@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import christmas.service.SeperateService;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Menus {
@@ -10,7 +9,7 @@ public class Menus {
     private SeperateService seperateService = new SeperateService();
 
     public Menus(String menus) {
-        this.menuInfo = seperateService.convertMenuInput(menus);
+        this.menuInfo = seperateService.convertMenuInputToMenus(menus);
     }
 
     public Map<String, Integer> getMenuInfo() {
