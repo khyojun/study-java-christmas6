@@ -9,7 +9,6 @@ public class Menus {
 
     private final Map<String, Integer> menuInfo;
 
-
     private SeperateService seperateService = new SeperateService();
 
     public Menus(String menus) {
@@ -37,5 +36,9 @@ public class Menus {
             totalMoney += nowMenu.getValue() * Menu.nowMenuPrice(nowMenu.getKey());
         }
         return totalMoney;
+    }
+
+    public long countSameMenu(String weekendMenu) {
+        return Menu.countSameMenu(weekendMenu, menuInfo);
     }
 }

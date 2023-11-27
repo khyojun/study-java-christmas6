@@ -8,8 +8,22 @@ public class Gift {
 
     private static final int GIFT_COUNT = 1;
 
+    private int price;
+
+    public Gift() {
+        this.price = 0;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     public boolean judgeGift(Menus menus) {
-        return menus.calculateBeforeSale() >= 120000;
+        if(menus.calculateBeforeSale() >=120000){
+            price=GIFT_MENU.getPrice();
+            return true;
+        }
+        return false;
     }
 
     public static Menu getGiftMenu() {

@@ -43,19 +43,19 @@ public class SeperateService {
     }
 
     private void seperateHyphen(Map<String, Integer> menuInfo, List<String> splitByComma) {
-        for(String splited : splitByComma)
-        {
-            List<String> splitByHyphen =  List.of(splited.split(HYPHEN));
-            validateRightHyphen(splitByHyphen);
-            String menuName = splitByHyphen.get(0);
-            String menuCount = splitByHyphen.get(1);
-            validateSplitByHyphen(menuName, menuCount);
-            menuInfo.put(menuName, Integer.parseInt(menuCount));
-        }
+
+            for (String splited : splitByComma) {
+                List<String> splitByHyphen = List.of(splited.split(HYPHEN));
+                validateRightHyphen(splitByHyphen);
+                String menuName = splitByHyphen.get(0);
+                String menuCount = splitByHyphen.get(1);
+                validateSplitByHyphen(menuName, menuCount);
+                menuInfo.put(menuName, Integer.parseInt(menuCount));
+            }
     }
 
     private static void validateRightHyphen(List<String> splitByHyphen) {
-        if(splitByHyphen.size()>2)
+        if(splitByHyphen.size()!=2)
             throw new IllegalArgumentException(MENU_EXCEPTION);
     }
 

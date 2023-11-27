@@ -1,6 +1,6 @@
 package christmas.service;
 
-public class WeekService implements DiscountPolicy{
+public class SpecialService implements DiscountPolicy{
 
     @Override
     public Object discountStatus() {

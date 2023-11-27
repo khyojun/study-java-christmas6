@@ -74,6 +74,12 @@ public enum Menu {
             .findFirst().orElseThrow(IllegalArgumentException::new).getPrice();
     }
 
+    public static long countSameMenu(String weekendMenu, Map<String, Integer> menuInfo) {
+         return Arrays.stream(Menu.values())
+            .filter(menu -> menu.getCategory().toString() == weekendMenu)
+            .map(Menu::getName).filter(menuInfo::containsKey).count();
+
+    }
 
 
     public String getName() {
