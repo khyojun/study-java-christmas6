@@ -24,7 +24,6 @@ public class SeperateService {
         isRightSeperateComma(menus,splitByComma.size());
         validateNoDuplicatie(splitByComma);
         seperateHyphen(menuInfo, splitByComma);
-        isRightSeperateHyphen(menus, menuInfo);
         return menuInfo;
     }
 
@@ -38,6 +37,7 @@ public class SeperateService {
         for(String splited : splitByComma)
         {
             List<String> splitByHyphen =  List.of(splited.split(HYPHEN));
+            validateRightHyphen(splitByHyphen);
             String menuName = splitByHyphen.get(0);
             String menuCount = splitByHyphen.get(1);
             validateSplitByHyphen(menuName, menuCount);
@@ -45,13 +45,18 @@ public class SeperateService {
         }
     }
 
+    private static void validateRightHyphen(List<String> splitByHyphen) {
+        if(splitByHyphen.size()>2)
+            throw new IllegalArgumentException(MENU_EXCEPTION);
+    }
+
     private void validateSplitByHyphen(String name, String count) {
         Menu.validateName(name);
         Menu.validateCount(count);
     }
 
-    private void isRightSeperateComma(String menus, int commaCount) {
-        if(menus.chars().filter(c -> c == COMMA.charAt(0)).count() != commaCount)
+    private void isRightSeperateComma(String menus, int splitSize) {
+        if(menus.chars().filter(c -> c == COMMA.charAt(0)).count() != splitSize-1)
             throw new IllegalArgumentException(MENU_EXCEPTION);
     }
 }

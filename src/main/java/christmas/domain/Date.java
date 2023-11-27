@@ -18,7 +18,7 @@ public class Date {
             validateRange(convertedDate);
             this.date=date;
         }catch (DateException | NumberFormatException dateError){
-            throw new IllegalArgumentException(dateError.getMessage());
+            throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE);
         }
     }
 
