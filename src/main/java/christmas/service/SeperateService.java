@@ -2,8 +2,10 @@ package christmas.service;
 
 import christmas.constant.Menu;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SeperateService {
 
@@ -19,9 +21,17 @@ public class SeperateService {
 
     private Map<String, Integer> seperate(String menus, Map<String, Integer> menuInfo) {
         List<String> splitByComma = List.of(menus.split(COMMA));
-        isRightSeperate(menus,splitByComma.size());
+        isRightSeperateComma(menus,splitByComma.size());
+        validateNoDuplicatie(splitByComma);
         seperateHyphen(menuInfo, splitByComma);
+        isRightSeperateHyphen(menus, menuInfo);
         return menuInfo;
+    }
+
+    private void validateNoDuplicatie(List<String> splitByComma) {
+        Set<String> nonDuplicateSplitByComma = new HashSet<>(splitByComma);
+        if(nonDuplicateSplitByComma.size() != splitByComma.size())
+            throw new IllegalArgumentException(MENU_EXCEPTION);
     }
 
     private void seperateHyphen(Map<String, Integer> menuInfo, List<String> splitByComma) {
@@ -40,7 +50,7 @@ public class SeperateService {
         Menu.validateCount(count);
     }
 
-    private void isRightSeperate(String menus, int commaCount) {
+    private void isRightSeperateComma(String menus, int commaCount) {
         if(menus.chars().filter(c -> c == COMMA.charAt(0)).count() != commaCount)
             throw new IllegalArgumentException(MENU_EXCEPTION);
     }
