@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.exception.DateException;
 import java.util.regex.Pattern;
 
 public class Date {
@@ -15,14 +16,14 @@ public class Date {
             int convertedDate = convert(beforeConvertDate);
             validateRange(convertedDate);
             this.date=date;
-        }catch (IllegalArgumentException error){
-            throw new IllegalArgumentException(error.getMessage());
+        }catch (DateException dateError){
+            throw new IllegalArgumentException(dateError.getMessage());
         }
     }
 
     private void validateRange(int convertedDate) {
         if(convertedDate < 1 || convertedDate > 31)
-            throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE);
+            throw new DateException(DATE_EXCEPTION_MESSAGE);
     }
 
     private int convert(String beforeConvertDate) {
@@ -31,7 +32,7 @@ public class Date {
 
     private void validateNumber(String beforeConvertDate) {
         if(isNotNumber(beforeConvertDate)){
-            throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE);
+            throw new DateException(DATE_EXCEPTION_MESSAGE);
         }
     }
 
