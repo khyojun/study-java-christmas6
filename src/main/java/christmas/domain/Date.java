@@ -10,11 +10,15 @@ public class Date {
 
     private int date;
 
+    public int getDate() {
+        return date;
+    }
+
     public Date(String beforeConvertDate) {
         try {
             int convertedDate = Integer.parseInt(beforeConvertDate);
             validateRange(convertedDate);
-            this.date=date;
+            this.date=convertedDate;
         }catch (DateException | NumberFormatException dateError){
             throw new IllegalArgumentException(DATE_EXCEPTION_MESSAGE);
         }

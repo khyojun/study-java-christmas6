@@ -18,11 +18,24 @@ public class ChristmasEventController {
 
     public void eventStart() {
         Date date = inputDate();
-        inputMenu();
-
+        Menus menus = inputMenu();
+        afterInputMenu(date);
+        notifyBeforeCalculateBenefit(menus);
 
 
     }
+
+    private void afterInputMenu(Date date) {
+
+        outputView.printAfterInputMenu(date.getDate());
+    }
+
+    private void notifyBeforeCalculateBenefit(Menus menus) {
+        outputView.printBeforeClaculateBenefit(menus);
+        outputView.printBeforeMoney(menus.calculateBeforeSale());
+    }
+
+
 
     private Menus inputMenu() {
         try {

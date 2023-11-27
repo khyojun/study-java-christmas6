@@ -7,6 +7,7 @@ import static christmas.constant.Category.MAIN;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 public enum Menu {
 
@@ -64,9 +65,15 @@ public enum Menu {
     public static void validateOnlyBeverage(Map<String, Integer> menuInfo) {
         long count = Arrays.stream(Menu.values()).filter(menu -> menu.getCategory() == BEVERAGE)
             .map(Menu::getName).filter(menuInfo::containsKey).count();
-        if(count == menuInfo.size())
+        if (count == menuInfo.size())
             throw new IllegalArgumentException();
     }
+
+    public static Integer nowMenuPrice(String key) {
+        return Arrays.stream(Menu.values()).filter(m -> m.getName().equals(key))
+            .findFirst().orElseThrow(IllegalArgumentException::new).getPrice();
+    }
+
 
 
     public String getName() {
