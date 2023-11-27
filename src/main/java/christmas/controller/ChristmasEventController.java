@@ -1,6 +1,8 @@
 package christmas.controller;
 
 import christmas.domain.Date;
+import christmas.domain.Menus;
+import christmas.exception.MenuException;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -16,9 +18,20 @@ public class ChristmasEventController {
 
     public void eventStart() {
         Date date = inputDate();
+        inputMenu();
 
 
 
+    }
+
+    private Menus inputMenu() {
+        try {
+            outputView.printInputMenu();
+            return new Menus(inputView.inputMenu());
+        }catch (IllegalArgumentException error){
+            outputView.printError(error.getMessage());
+            return inputMenu();
+        }
     }
 
     private Date inputDate() {

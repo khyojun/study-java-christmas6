@@ -17,4 +17,8 @@ public class InputView {
     public String inputDate() {
         return Console.readLine();
     }
+
+    public String inputMenu() {
+        return Console.readLine();
+    }
 }

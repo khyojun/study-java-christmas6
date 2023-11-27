@@ -1,8 +1,10 @@
 package christmas.constant;
 
 import static christmas.constant.Category.APPETIZER;
-import static christmas.constant.Category.;
+import static christmas.constant.Category.*;
 import static christmas.constant.Category.MAIN;
+
+import java.util.Arrays;
 
 public enum Menu {
 
@@ -37,6 +39,22 @@ public enum Menu {
         this.name = name;
         this.price = price;
         this.category = category;
+    }
+
+
+    public static void validateName(String name){
+        if(Arrays.stream(Menu.values()).noneMatch(m -> m.getName().equals(name)))
+            throw new IllegalArgumentException();
+    }
+
+    public static void validateCount(String count) {
+        try{
+            int convertCount = Integer.parseInt(count);
+            if(convertCount<1 || convertCount >20)
+                throw new IllegalArgumentException();
+        }catch (IllegalArgumentException error){
+            throw new IllegalArgumentException();
+        }
     }
 
 
